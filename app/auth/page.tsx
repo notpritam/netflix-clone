@@ -27,7 +27,7 @@ const Auth = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [email, username, password]);
   return (
     <div className=" h-full w-full bg-cover bg-center bg-no-repeat bg-[url('/images/hero.jpg')]">
       <div className="w-full h-full bg-black lg:bg-opacity-40">
@@ -71,6 +71,7 @@ const Auth = () => {
             </div>
 
             <button
+              onClick={register}
               className="
             bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
