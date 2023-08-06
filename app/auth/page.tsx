@@ -2,6 +2,7 @@
 import InputField from "@/components/inputfield";
 import React, { useCallback } from "react";
 import { useState } from "react";
+import axios from "axios";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,18 @@ const Auth = () => {
     setVariant((currentVariant) =>
       currentVariant === "Login" ? "Register" : "Login"
     );
+  }, []);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", {
+        email,
+        username,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
   return (
     <div className=" h-full w-full bg-cover bg-center bg-no-repeat bg-[url('/images/hero.jpg')]">
